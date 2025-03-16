@@ -21,6 +21,7 @@
     align-items: center;
     justify-content: flex-end;
     margin-bottom: 16px;
+    color: #e6e6ef;
 }
 
 .logo {
@@ -108,7 +109,7 @@
             display: grid;
             grid-auto-columns: 60px;
             grid-auto-flow: column;
-            justify-content: space-between;
+            justify-content: space-evenly;
         }
 
         ul a {
@@ -123,5 +124,4 @@
             display: none;
         }
     }
-
 }
