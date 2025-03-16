@@ -109,7 +109,6 @@
             grid-auto-columns: 60px;
             grid-auto-flow: column;
             justify-content: space-between;
-            align-items: center;
         }
 
         ul a {
