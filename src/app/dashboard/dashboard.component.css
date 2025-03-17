@@ -11,3 +11,11 @@ div h1 {
     align-items: stretch;
 }
 
+@media (max-width: 600px) {
+    .dashboard-container {
+        grid-template-columns: 1fr; /* Single column */
+        padding-bottom: 60px; /* Add padding to avoid overlap with navbar */
+        justify-content: center;
+        margin: 0 auto;
+    }
+}

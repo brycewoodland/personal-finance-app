@@ -83,3 +83,31 @@
     border-top: 1px solid white;
     margin: 10px 0;
 }
+
+@media (max-width: 600px) {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Ensure full viewport height */
+        margin: 0; /* Remove default margin */
+    }
+
+    .dashboard-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 90%;
+        padding: 15px;
+        font-size: 18px;
+        height: auto;
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .view-button {
+        width: 100%;
+        max-width: 200px;
+    }
+}
