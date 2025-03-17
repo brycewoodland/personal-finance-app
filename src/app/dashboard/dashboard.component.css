@@ -1,0 +1,13 @@
+div h1 {
+    margin-left: 10px;
+    padding: 10px;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    align-items: stretch;
+}
+

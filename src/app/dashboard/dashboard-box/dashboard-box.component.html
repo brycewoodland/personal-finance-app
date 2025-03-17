@@ -1,0 +1,12 @@
+<div class="dashboard-box" [style.background]="background">
+    <div class="circle bottom-right" [style.background]="bottomCircleColor"></div>
+        
+    <div class="circle top-right" [style.background]="topCircleColor"></div>
+        <h3>{{ text }}</h3>
+        <button class="view-button">View</button>
+        <hr class="divider">
+
+        <div class="box-content">
+            <ng-content></ng-content>
+        </div>
+</div>

@@ -1,1 +1,37 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+    <app-dashboard-box 
+        text="Categories"
+        background="linear-gradient(23deg, #00A3FF 0%, #006299 100%)"
+        [bottomCircleColor]="'#00A3FF'"
+        [topCircleColor]="'None'">
+        <div class="box-content">
+            <p>Food: $200</p>
+            <p>Transportation: $150</p>
+            <p>Entertainment: $100</p>
+        </div>
+    </app-dashboard-box>
+
+    <app-dashboard-box 
+        text="Budget"
+        background="linear-gradient(90deg, #E8550E 0%, #D68600 100%)"
+        [bottomCircleColor]="'#E8550E'"
+        [topCircleColor]="'#D68600'">
+        <div class="box-content">
+            <p>Total Budget: $1000</p>
+            <p>Spent: $500</p>
+            <p>Remaining: $500</p>
+        </div>
+    </app-dashboard-box>
+
+    <app-dashboard-box 
+        text="Reports"
+        background="linear-gradient(180deg, #00D68F 0%, #44BCFF 100%)"
+        [bottomCircleColor]="'#00D68F'"
+        [topCircleColor]="'#44BCFF'">
+        <div class="box-content">
+            <p>Monthly Spending</p>
+            <p>Income vs. Expenses</p>
+            <p>Savings</p>
+        </div>
+    </app-dashboard-box>
+</div>
