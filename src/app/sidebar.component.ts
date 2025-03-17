@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-sidebar',
   standalone: false,
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  templateUrl: './sidebar.component.html',
+  styleUrl: './sidebar.component.css'
 })
 export class HeaderComponent {
   isSidebarCollapsed: boolean = false;

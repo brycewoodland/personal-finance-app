@@ -7,7 +7,8 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { CategoryComponent } from './category/category.component';
 import { BudgetComponent } from './budget/budget.component';
 import { ReportComponent } from './report/report.component';
-import { HeaderComponent } from './header.component';
+import { HeaderComponent } from './sidebar.component';
+import { DashboardBoxComponent } from './dashboard/dashboard-box/dashboard-box.component';
 
 @NgModule({
   declarations: [
@@ -17,10 +18,11 @@ import { HeaderComponent } from './header.component';
     CategoryComponent,
     BudgetComponent,
     ReportComponent,
-    HeaderComponent
+    HeaderComponent,
+    DashboardBoxComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
