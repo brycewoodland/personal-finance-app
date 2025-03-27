@@ -1,8 +1,8 @@
 .dashboard-box {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    grid-template-rows: auto auto auto; /* 3 rows */
-    gap: 10px; /* Spacing between grid items */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: 10px;
     padding: 10px;
     color: white;
     font-size: 22px;
@@ -13,6 +13,11 @@
     position: relative;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
     height: 209px;
+}
+
+.dashboard-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 .circle {
@@ -35,7 +40,8 @@
     height: 250px;
 }
 
-.dashboard-box p {
+.dashboard-box p,
+h3 {
     position: relative;
     z-index: 2;
 }
@@ -68,7 +74,7 @@
     text-transform: uppercase;
     grid-column: 2 / 3;
     grid-row: 1;
-    justify-self: end; /* Align the button to the end of the grid column */
+    justify-self: end;
     position: relative;
     z-index: 2;
 }
@@ -90,8 +96,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh; /* Ensure full viewport height */
-        margin: 0; /* Remove default margin */
+        height: 100vh;
+        margin: 0;
     }
 
     .dashboard-box {

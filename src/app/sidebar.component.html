@@ -1,7 +1,7 @@
 <nav id="sidebar" [class.collapsed]="isSidebarCollapsed">
     <ul>
         <li>
-            <span class="logo" *ngIf="!isSidebarCollapsed">Finance Tracker</span>
+            <span *ngIf="!isSidebarCollapsed">Finance Tracker</span>
             <button id="toggle-btn" (click)="toggleSidebar()">
                 <!-- Icon when sidebar is expanded (double left arrow)-->
                 <svg *ngIf="!isSidebarCollapsed" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">

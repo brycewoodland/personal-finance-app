@@ -1,0 +1,15 @@
+<div class="recent-transactions">
+    <h3>Recent Transactions</h3>
+    <div class="transactions-list">
+        <div *ngFor="let transaction of transactions" class="transaction-item">
+            <div class="transaction-info">
+                <div class="transaction-date">{{ transaction.date | date:'MMM d' }}</div>
+                <div class="transaction-description">{{ transaction.description }}</div>
+                <div class="transaction-category">{{ transaction.category }}</div>
+            </div>
+            <div class="transaction-amount" [ngClass]="{'income': transaction.type === 'income'}">
+                {{ transaction.amount | currency:'USD' }}
+            </div>
+        </div>
+    </div>
+</div> 
