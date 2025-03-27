@@ -16,7 +16,7 @@ const routes: Routes = [
     // { path: 'settings', component: SettingsComponent },
     // { path: 'logout', component: LogoutComponent },
     { path: '**', redirectTo: '/dashboard' }
-]
+];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
