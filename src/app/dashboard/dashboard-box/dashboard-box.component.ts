@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-box',
@@ -11,4 +12,13 @@ export class DashboardBoxComponent {
   @Input() text: string = 'Default Box';
   @Input() bottomCircleColor: string = '';
   @Input() topCircleColor: string = '';
+  @Input() route: string = '';
+
+  constructor(private router: Router) { }
+
+  navigateToRoute() {
+    if (this.route) {
+      this.router.navigate([this.route]);
+    }
+  }
 }
