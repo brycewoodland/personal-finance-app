@@ -1,1 +1,63 @@
-<p>category works!</p>
+<div class="categories-container">
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Categories</h1>
+        <div class="header-actions">
+            <div class="search-box">
+                <input type="text" placeholder="Search categories...">
+                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#666">
+                    <path d="M796-121 533-384q-30 26-69.959 40.5T378-329q-108.162 0-183.081-75Q120-479 120-585t75-181q75-75 181.5-75t181 75Q632-691 632-585.85 632-542 618-502q-14 40-42 75l264 262-44 44ZM377-389q81.25 0 138.125-57.5T572-585q0-81-56.875-138.5T377-781q-82.083 0-139.542 57.5Q180-666 180-585t57.458 138.5Q294.917-389 377-389Z"/>
+                </svg>
+            </div>
+            <button class="add-button" (click)="showAddCategoryModal = true">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                    <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/>
+                </svg>
+                Add Category
+            </button>
+        </div>
+    </div>
+
+    <!-- Categories Grid -->
+    <div class="categories-grid">
+        <div class="category-card" *ngFor="let category of categories">
+            <div class="category-header">
+                <div class="category-icon" [style.background-color]="category.color">
+                    <span class="material-icons">{{ category.icon }}</span>
+                </div>
+                <div class="category-actions">
+                    <button class="icon-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#666">
+                            <path d="M200-200h57l50-50H200v50Zm240 0h200l-50-50H440l50 50Zm240 0h57v-50h-57l50 50Zm-480-60v-400h560v400H200Zm0-460v-50h560v50H200Z"/>
+                        </svg>
+                    </button>
+                    <button class="icon-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#666">
+                            <path d="M261-120q-24.75 0-42.375-17.625T201-180v-570h-41v-60h188v-30h264v30h188v60h-41v570q0 24-18 42t-42 18H261Zm438-630H261v570h438v-570ZM367-266h60v-399h-60v399Zm166 0h60v-399h-60v399ZM261-750v570-570Z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="category-content">
+                <h3>{{ category.name }}</h3>
+                <div class="category-stats">
+                    <div class="stat">
+                        <span class="label">Spent</span>
+                        <span class="value">{{ category.totalSpent | currency:'USD' }}</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Budget</span>
+                        <span class="value">{{ category.budget | currency:'USD' }}</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Transactions</span>
+                        <span class="value">{{ category.transactionCount }}</span>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" [style.width.%]="(category.totalSpent / category.budget) * 100"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
