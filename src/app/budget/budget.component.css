@@ -1,0 +1,130 @@
+.budget-container {
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 80rem;
+    height: 100vh;
+    /* Set height to full viewport */
+    margin: 0 auto;
+    background: #f0f4f8;
+    /* Light gray background */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-left: 50px;
+}
+
+/* Header Styles */
+.budget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.add-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.add-button:hover {
+    background: #45a049;
+}
+
+/* Monthly Summary Section (Total Allocated, Spent, Remaining) */
+.budget-summary-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+/* Summary Card Styles */
+.summary-card {
+    background: #ffffff;
+    overflow: hidden;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1 1 20%;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Summary Text Styles */
+.summary-text {
+    font-size: 1rem;
+    color: #4a5568;
+    margin-bottom: 0.5rem;
+}
+
+.summary-value {
+    font-weight: bold;
+    color: #2d3748;
+}
+
+/* Budget Grid Styles */
+.budget-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    flex: 1 1 65%;
+}
+
+@media (min-width: 768px) {
+    .budget-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Individual Budget Card Styles */
+.budget-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.budget-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Progress Bar Container */
+.progress-container {
+    width: 100%;
+    background: #edf2f7;
+    border-radius: 9999px;
+    height: 10px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 9999px;
+    transition: width 0.3s ease;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .budget-summary-container {
+        flex-direction: column;
+    }
+
+    .summary-card {
+        flex: 1 1 100%;
+    }
+}

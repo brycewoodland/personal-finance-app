@@ -1,1 +1,59 @@
-<p>budget works!</p>
+<div class="budget-container">
+    <div class="budget-header">
+        <h2>Budget Overview</h2>
+        <button class="add-button" (click)="showAddCategoryModal = true">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/>
+            </svg>
+            Add Budget
+        </button>
+    </div>
+
+    <div class="budget-summary-container">
+        <!-- Monthly Summary -->
+        <div class="summary-card">
+            <p class="summary-text">Total Allocated: <span class="summary-value">${{ getTotalAllocated() }}</span></p>
+            <p class="summary-text">Total Spent: <span class="summary-value">${{ getTotalSpent() }}</span></p>
+            <p class="summary-text remaining" [ngClass]="{'negative': getTotalRemaining() < 0, 'positive': getTotalRemaining() >= 0}">
+                Remaining Budget: <span class="summary-value">${{ getTotalRemaining() }}</span>
+            </p>
+        </div>
+    
+        <div class="budget-grid">
+            <div *ngFor="let budget of budgets" class="budget-card">
+                <div class="budget-header">
+                    <h3 class="budget-title" [style.color]="budget.color">{{ budget.category }}</h3>
+                    <p class="budget-allocated">Allocated: ${{ budget.allocated }}</p>
+                </div>
+                
+                <div class="budget-details">
+                    <p class="budget-info">Spent: <span>${{ budget.spent }}</span></p>
+                    <p class="budget-remaining" [ngClass]="{'negative': budget.remaining < 0, 'positive': budget.remaining >= 0}">
+                        Remaining: <span>${{ budget.remaining }}</span>
+                    </p>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" [ngStyle]="{ 'width': getProgress(budget.spent, budget.allocated) + '%', 'background': budget.color }"></div>
+                </div>
+                
+                <!-- Spending Trends -->
+                <p class="budget-trend" *ngIf="budget.trend !== undefined">
+                    <span class="trend-icon">{{ budget.trend > 0 ? '🔺' : '🔻' }}</span> 
+                    <span class="trend-value">{{ budget.trend | number: '1.0-2' }}% from last month</span>
+                </p>
+                
+                <!-- Recent Transactions -->
+                <div class="transactions-list">
+                    <h4 class="transactions-header">Recent Transactions</h4>
+                    <ul>
+                        <li *ngFor="let transaction of budget.recentTransactions" class="transaction-item">
+                            <span class="transaction-description">{{ transaction.description }}</span>
+                            <span class="transaction-amount">${{ transaction.amount }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

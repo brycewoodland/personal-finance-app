@@ -20,7 +20,7 @@ export class CategoryComponent {
     {
       name: 'Food & Dining',
       icon: 'restaurant',
-      color: '#FF6B6B',
+      color: '#5e63ff',
       totalSpent: 450.75,
       budget: 500,
       transactionCount: 12
@@ -28,7 +28,7 @@ export class CategoryComponent {
     {
       name: 'Transportation',
       icon: 'Vehicle',
-      color: '#4ECDC4',
+      color: '#00A3FF',
       totalSpent: 200.50,
       budget: 300,
       transactionCount: 5
@@ -36,7 +36,7 @@ export class CategoryComponent {
     {
       name: 'Entertainment',
       icon: 'movie',
-      color: '#45B7D1',
+      color: '#2693C0',
       totalSpent: 150.25,
       budget: 200,
       transactionCount: 8
@@ -44,7 +44,7 @@ export class CategoryComponent {
     {
       name: 'Shopping',
       icon: 'shopping',
-      color: '#96CEB4',
+      color: '#00D4B5',
       totalSpent: 325.00,
       budget: 400,
       transactionCount: 15

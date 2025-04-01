@@ -1,0 +1,83 @@
+.report-container {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 64px); 
+    margin-left: 150px; 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: auto 1fr;
+    gap: 2rem;
+    width: calc(100% - 250px);
+}
+
+.financial-reports {
+    grid-column: 1 / -1;
+}
+
+.overview-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem; 
+}
+
+.box {
+    background-color: #ffffff;
+    padding: 1.5rem; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    margin-bottom: 1rem;
+}
+
+.summary-cards {
+    display: flex;
+    gap: 1rem;
+}
+
+.summary-card {
+    flex: 1; 
+    padding: 1rem;
+    background-color: #e0f7fa;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.chart-section {
+    flex: 1;
+}
+
+.detailed-reports {
+    flex: 1; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Conditional Row Styles */
+.income-row {
+    background-color: #c8e6c9; /* Light green for income */
+}
+
+.expense-row {
+    background-color: #ffcdd2; /* Light red for expenses */
+}
