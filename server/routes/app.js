@@ -1,13 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const budgetRoutes = require('./budget');
-const categoryRoutes = require('./category');
-const transactionRoutes = require('./transaction');
-const userRoutes = require('./user');
+var express = require('express');
+var router = express.Router();
 
-router.use('/budgets', budgetRoutes);
-router.use('/categories', categoryRoutes);
-router.use('/transactions', transactionRoutes);
-router.use('/users', userRoutes);
+/* GET home page. */
+router.get('/', function (req, res, next) {
+    res.sendFile(path.join(__dirname, 'dist/personal-finance-app/browser/index.html'));
+});
 
 module.exports = router;

@@ -1,3 +1,4 @@
+// Get dependencies
 var express = require('express');
 var path = require('path');
 var http = require('http');
@@ -6,18 +7,25 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 
+// import the routing file to handle the default (index) route
 var index = require('./server/routes/app');
 
-// ... ADD CODE TO IMPORT ROUTING FILES HERE ...
+// ... ADD CODE TO IMPORT YOUR ROUTING FILES HERE ... 
+const budgetRoutes = require('./server/routes/budget');
+const categoryRoutes = require('./server/routes/category');
+const transactionRoutes = require('./server/routes/transaction');
+const userRoutes = require('./server/routes/user');
 
-var app = express();
+var app = express(); // create an instance of express
 
 // Tell express to use the following parsers for POST data
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(cookieParser());
 
-app.use(logger('dev')); // Tell express to use the Morgan Logger
+app.use(logger('dev')); // Tell express to use the Morgan logger
 
 // Add support for CORS
 app.use((req, res, next) => {
@@ -28,37 +36,46 @@ app.use((req, res, next) => {
     );
     res.setHeader(
         'Access-Control-Allow-Methods',
-        'GET, POST, PUT, DELETE, OPTIONS'
+        'GET, POST, PATCH, PUT, DELETE, OPTIONS'
     );
     next();
 });
 
 // Tell express to use the specified directory as the
-// root directory for website files
-app.use(express.static(path.join(__dirname, 'dist')));
+// root directory for your web site
+app.use(express.static(path.join(__dirname, 'dist/personal-finance-app/browser')));
 
 // Tell express to map the default route ('/') to the index route
-app.use('/api', index);
+app.use('/', index);
 
-// ... ADD CODE TO MAP OTHER ROUTES HERE ...
+// ... ADD YOUR CODE TO MAP YOUR URL'S TO ROUTING FILES HERE ...
+app.use('/api/budget', budgetRoutes);
+app.use('/api/category', categoryRoutes);
+app.use('/api/transaction', transactionRoutes);
+app.use('/api/user', userRoutes);
+
+// Tell express to map all other non-defined routes back to the index page
+app.use(function (req, res, next) {
+    res.sendFile(path.resolve(__dirname, 'dist/cms/browser/index.html'));
+});
 
 // Define the port address and tell express to use this port
 const port = process.env.PORT || '3000';
 app.set('port', port);
 
-// Create HTTP server
+// Create HTTP server.
 const server = http.createServer(app);
 
-// Tell the server to start listening on the defined port
-server.listen(port, () => console.log(`API running on localhost:${port}`));
+// Tell the server to start listening on the provided port
+server.listen(port, function () {
+    console.log('API running on localhost: ' + port)
+});
 
-// Estabalish connection to the mongo database
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+// establish a connection to the mongo database
+mongoose.connect('mongodb://localhost:27017/personal_finance', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
-        console.log('Connected to MongoDB')
+        console.log('Connected to database!');
     })
     .catch((err) => {
-        console.log('Error connecting to MongoDB')
-        console.log(err)
-    })
-
+        console.log('Connection failed: ' + err);
+    });

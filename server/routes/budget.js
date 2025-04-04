@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
         spent,
         remaining,
         userId,
-        customId: req.body.customId // Assuming customId is generated on the frontend
+        customId: req.body.customId
     });
 
     try {
@@ -26,9 +26,11 @@ router.post('/', async (req, res) => {
 // Get all budgets
 router.get('/', async (req, res) => {
     try {
-        const budgets = await Budget.find();
+        const budgets = await Budget.find().populate('category userId');
+        console.log('Retrieved budgets:', budgets);
         res.status(200).json(budgets);
     } catch (error) {
+        console.error('Error retrieving budgets:', error);
         res.status(500).json({ message: error.message });
     }
 });
@@ -60,7 +62,7 @@ router.delete('/:id', async (req, res) => {
     try {
         const deletedBudget = await Budget.findByIdAndDelete(req.params.id);
         if (!deletedBudget) return res.status(404).json({ message: 'Budget not found' });
-        res.status(204).send(); // No content
+        res.status(204).send();
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
