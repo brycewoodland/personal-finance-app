@@ -38,7 +38,7 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Tell express to map the default route ('/') to the index route
-app.use('/', index);
+app.use('/api', index);
 
 // ... ADD CODE TO MAP OTHER ROUTES HERE ...
 
@@ -54,7 +54,7 @@ server.listen(port, () => console.log(`API running on localhost:${port}`));
 
 // Estabalish connection to the mongo database
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => { 
+    .then(() => {
         console.log('Connected to MongoDB')
     })
     .catch((err) => {
