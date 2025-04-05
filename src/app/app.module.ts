@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -12,6 +13,7 @@ import { RecentTransactionsComponent } from './dashboard/recent-transactions/rec
 import { CategoryComponent } from './category/category.component';
 import { BudgetComponent } from './budget/budget.component';
 import { ReportComponent } from './report/report.component';
+import { BudgetAddComponent } from './budget/budget-add/budget-add.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,14 @@ import { ReportComponent } from './report/report.component';
     RecentTransactionsComponent,
     CategoryComponent,
     BudgetComponent,
-    ReportComponent
+    ReportComponent,
+    BudgetAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

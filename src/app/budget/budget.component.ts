@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Budget } from './budget.model';
 import { BudgetService } from './budget.service';
+import { ActivatedRoute, Router } from '@angular/router'; // Import ActivatedRoute and Router
 
 @Component({
   selector: 'app-budget',
@@ -10,12 +11,15 @@ import { BudgetService } from './budget.service';
 })
 export class BudgetComponent implements OnInit {
   budgets: Budget[] = [];
-  showAddCategoryModal: boolean = false;
+  showAddCategoryModal: boolean = false; // Default modal visibility
 
-  // Define an array of colors
   private colors: string[] = ['#5e63ff', '#00A3FF', '#2693C0', '#00D4B5'];
 
-  constructor(private budgetService: BudgetService) { }
+  constructor(
+    private budgetService: BudgetService,
+    private route: ActivatedRoute, // Inject ActivatedRoute
+    private router: Router // Inject Router
+  ) { }
 
   ngOnInit() {
     this.budgetService.getBudgets();
@@ -23,10 +27,15 @@ export class BudgetComponent implements OnInit {
       (budgets: Budget[]) => {
         this.budgets = budgets.map(budget => ({
           ...budget,
-          color: this.getRandomColor() // Assign a random color to each budget
+          color: this.getRandomColor()
         }));
       }
     );
+  }
+
+  onBudgetAdded() {
+    this.showAddCategoryModal = false; // Close the modal after adding a budget
+    this.loadBudgets();
   }
 
   loadBudgets() {
@@ -46,10 +55,11 @@ export class BudgetComponent implements OnInit {
   }
 
   getTotalRemaining(): number {
-    return this.budgets.reduce((sum, budget) => sum + budget.remaining, 0);
+    const totalAllocated = this.budgets.reduce((sum, budget) => sum + budget.allocated, 0);
+    const totalSpent = this.budgets.reduce((sum, budget) => sum + budget.spent, 0);
+    return totalAllocated - totalSpent; // Total allocated minus total spent
   }
 
-  // Method to get a random color from the colors array
   private getRandomColor(): string {
     const randomIndex = Math.floor(Math.random() * this.colors.length);
     return this.colors[randomIndex];

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoryComponent } from './category/category.component';
 import { BudgetComponent } from './budget/budget.component';
+import { BudgetAddComponent } from './budget/budget-add/budget-add.component';
 import { ReportComponent } from './report/report.component';
 // import { SettingsComponent } from './settings/settings.component';
 // import { LogoutComponent } from './logout/logout.component';
@@ -11,7 +12,11 @@ const routes: Routes = [
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'categories', component: CategoryComponent },
-    { path: 'budget', component: BudgetComponent },
+    {
+    path: 'budget', component: BudgetComponent, children: [
+        { path: 'new', component: BudgetAddComponent }
+    ]
+    },
     { path: 'reports', component: ReportComponent },
     // { path: 'settings', component: SettingsComponent },
     // { path: 'logout', component: LogoutComponent },
