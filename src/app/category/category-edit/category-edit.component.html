@@ -1,0 +1,62 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" id="category-edit">
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <label for="name">Category Name:</label>
+                    <input
+                        type="text"
+                        id="name"
+                        class="form-control"
+                        size="120"
+                        max="120"
+                        name="name"
+                        [(ngModel)]="category.name"
+                        required
+                        #name="ngModel">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <label for="icon">Icon:</label>
+                    <input
+                        type="text"
+                        id="icon"
+                        class="form-control"
+                        size="120"
+                        max="120"
+                        name="icon"
+                        [(ngModel)]="category.icon"
+                        required
+                        #icon="ngModel">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <label for="description">Description:</label>
+                    <input
+                        type="text"
+                        id="description"
+                        class="form-control"
+                        size="150"
+                        max="255"
+                        name="description"
+                        [(ngModel)]="category.description">
+                </div>
+            </div>
+
+            <div *ngIf="(name.invalid && name.untouched) || (icon.invalid && icon.untouched)" class="alert alert-danger mt-3">
+                The Category Name and Icon are required fields.
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 btn-toolbar">
+                    <button class="btn btn-success" type="submit" [disabled]="f.invalid">Save</button>
+                    <button class="btn btn-primary" type="button" (click)="onCancel()">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

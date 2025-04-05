@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
 // Get all categories
 router.get('/', async (req, res) => {
     try {
-        const categories = await Category.find();
+        const categories = await Category.find().populate('budgetId');
         res.status(200).json(categories);
     } catch (error) {
         res.status(500).json({ message: error.message });

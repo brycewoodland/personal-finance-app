@@ -1,13 +1,8 @@
-import { Component } from '@angular/core';
-
-interface Category {
-  name: string;
-  icon: string;
-  color: string;
-  totalSpent: number;
-  budget: number;
-  transactionCount: number;
-}
+import { Component, OnInit } from '@angular/core';
+import { CategoryService } from './category.service';
+import { BudgetService } from '../budget/budget.service';
+import { Category } from './category.model';
+import { Budget } from '../budget/budget.model';
 
 @Component({
   selector: 'app-category',
@@ -15,41 +10,39 @@ interface Category {
   templateUrl: './category.component.html',
   styleUrl: './category.component.css'
 })
-export class CategoryComponent {
-  categories: Category[] = [
-    {
-      name: 'Food & Dining',
-      icon: 'restaurant',
-      color: '#5e63ff',
-      totalSpent: 450.75,
-      budget: 500,
-      transactionCount: 12
-    },
-    {
-      name: 'Transportation',
-      icon: 'Vehicle',
-      color: '#00A3FF',
-      totalSpent: 200.50,
-      budget: 300,
-      transactionCount: 5
-    },
-    {
-      name: 'Entertainment',
-      icon: 'movie',
-      color: '#2693C0',
-      totalSpent: 150.25,
-      budget: 200,
-      transactionCount: 8
-    },
-    {
-      name: 'Shopping',
-      icon: 'shopping',
-      color: '#00D4B5',
-      totalSpent: 325.00,
-      budget: 400,
-      transactionCount: 15
-    }
-  ];
-
+export class CategoryComponent implements OnInit {
+  categories: Category[] = [];
+  budgets: Budget[] = [];
   showAddCategoryModal: boolean = false;
+
+  private colors: string[] = ['#5e63ff', '#00A3FF', '#2693C0', '#00D4B5'];
+
+  constructor(
+    private categoryService: CategoryService,
+    private budgetService: BudgetService
+  ) { }
+
+  ngOnInit(): void {
+    this.fetchCategories();
+    this.fetchBudgets();
+  }
+
+  fetchCategories(): void {
+    this.categoryService.getCategories();
+    this.categoryService.categoryListChangedEvent.subscribe((categories: Category[]) => {
+      this.categories = categories;
+    });
+  }
+
+  fetchBudgets(): void {
+    this.budgetService.getBudgets();
+    this.budgetService.budgetListChangedEvent.subscribe((budgets: Budget[]) => {
+      this.budgets = budgets;
+    });
+  }
+
+  private getRandomColor(): string {
+    const randomIndex = Math.floor(Math.random() * this.colors.length);
+    return this.colors[randomIndex];
+  }
 }

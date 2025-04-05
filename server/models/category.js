@@ -8,6 +8,7 @@ const categorySchema = new mongoose.Schema({
     description: { type: String },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
+    budgetId: { type: mongoose.Schema.Types.ObjectId, ref: 'Budget' }
 });
 
 const Category = mongoose.model('Category', categorySchema);

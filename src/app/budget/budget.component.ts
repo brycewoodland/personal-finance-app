@@ -11,14 +11,14 @@ import { ActivatedRoute, Router } from '@angular/router'; // Import ActivatedRou
 })
 export class BudgetComponent implements OnInit {
   budgets: Budget[] = [];
-  showAddCategoryModal: boolean = false; // Default modal visibility
+  showAddCategoryModal: boolean = false;
 
   private colors: string[] = ['#5e63ff', '#00A3FF', '#2693C0', '#00D4B5'];
 
   constructor(
     private budgetService: BudgetService,
-    private route: ActivatedRoute, // Inject ActivatedRoute
-    private router: Router // Inject Router
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -34,7 +34,7 @@ export class BudgetComponent implements OnInit {
   }
 
   onBudgetAdded() {
-    this.showAddCategoryModal = false; // Close the modal after adding a budget
+    this.showAddCategoryModal = false;
     this.loadBudgets();
   }
 

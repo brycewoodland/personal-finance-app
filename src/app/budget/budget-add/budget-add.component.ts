@@ -3,6 +3,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Budget } from '../budget.model';
 import { BudgetService } from '../budget.service';
+import { CategoryService } from '../../category/category.service';
+import { Category } from '../../category/category.model';
 
 @Component({
   selector: 'app-budget-add',
@@ -13,12 +15,14 @@ import { BudgetService } from '../budget.service';
 export class BudgetAddComponent implements OnInit {
 
   originalBudget: Budget;
-  budget: Budget;
+  budget: Budget = new Budget(null, 0, 0, 0, null, null, new Date(), new Date());
   editMode: boolean = false;
   customId: number;
+  categories: Category[] = [];
 
   constructor(
     private budgetService: BudgetService,
+    private categoryService: CategoryService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -38,6 +42,12 @@ export class BudgetAddComponent implements OnInit {
 
       this.editMode = true;
       this.budget = JSON.parse(JSON.stringify(this.originalBudget));
+    });
+
+    this.categoryService.getCategories();
+    this.categoryService.categoryListChangedEvent.subscribe((categories: Category[]) => {
+      this.categories = categories;
+      console.log('Fetched categories:', this.categories);
     });
   }
 

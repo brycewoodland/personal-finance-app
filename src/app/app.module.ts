@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -14,6 +15,7 @@ import { CategoryComponent } from './category/category.component';
 import { BudgetComponent } from './budget/budget.component';
 import { ReportComponent } from './report/report.component';
 import { BudgetAddComponent } from './budget/budget-add/budget-add.component';
+import { CategoryEditComponent } from './category/category-edit/category-edit.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,15 @@ import { BudgetAddComponent } from './budget/budget-add/budget-add.component';
     CategoryComponent,
     BudgetComponent,
     ReportComponent,
-    BudgetAddComponent
+    BudgetAddComponent,
+    CategoryEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

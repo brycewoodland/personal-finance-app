@@ -1,22 +1,24 @@
 <div class="modal-container">
     <div class="add-budget-container">
       <h2>Add New Budget</h2>
-      <form>
-          <label for="categoryId">Category ID:</label>
-          <input id="categoryId" formControlName="categoryId" required>
-  
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+          <label for="categoryId">Category:</label>
+          <select id="categoryId" name="categoryId" [(ngModel)]="budget.categoryId" required>
+              <option *ngFor="let category of categories" [value]="category._id">{{ category.name }}</option>
+          </select>
+
           <label for="allocated">Allocated:</label>
-          <input id="allocated" type="number" formControlName="allocated" required>
-  
+          <input id="allocated" type="number" name="allocated" [(ngModel)]="budget.allocated" required>
+
           <label for="spent">Spent:</label>
-          <input id="spent" type="number" formControlName="spent" required>
-  
+          <input id="spent" type="number" name="spent" [(ngModel)]="budget.spent" required>
+
           <label for="remaining">Remaining:</label>
-          <input id="remaining" type="number" formControlName="remaining" required>
-  
+          <input id="remaining" type="number" name="remaining" [(ngModel)]="budget.remaining" required>
+
           <button type="submit">Add Budget</button>
           <button type="button" (click)="onCancel()">Cancel</button>
       </form>
     </div>
-  </div>
+</div>
   
