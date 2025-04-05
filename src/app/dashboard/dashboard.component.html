@@ -19,9 +19,9 @@
         [topCircleColor]="'#003F7F'"
         route="/budget">
         <div class="box-content">
-            <p>Total Budget: $1000</p>
-            <p>Spent: $500</p>
-            <p>Remaining: $500</p>
+            <p>Total Budget: ${{ totalBudget }}</p>
+            <p>Spent: ${{ totalSpent }}</p>
+            <p>Remaining: ${{ totalRemaining }}</p>
         </div>
     </app-dashboard-box>
 
@@ -41,4 +41,3 @@
     <app-dashboard-graph class="app-dashboard-graph"></app-dashboard-graph>
     <app-recent-transactions></app-recent-transactions>
 </div>
-

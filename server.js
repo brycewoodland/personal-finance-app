@@ -56,7 +56,7 @@ app.use('/api/user', userRoutes);
 
 // Tell express to map all other non-defined routes back to the index page
 app.use(function (req, res, next) {
-    res.sendFile(path.resolve(__dirname, 'dist/cms/browser/index.html'));
+    res.sendFile(path.resolve(__dirname, 'dist/personal-finance-app/browser/index.html'));
 });
 
 // Define the port address and tell express to use this port

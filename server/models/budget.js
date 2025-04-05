@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const budgetSchema = new mongoose.Schema({
-    category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
+    categoryId: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
     allocated: { type: Number, required: true },
     spent: { type: Number, required: true },
     remaining: { type: Number, required: true },

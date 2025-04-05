@@ -22,10 +22,8 @@
         <div class="budget-grid">
             <div *ngFor="let budget of budgets" class="budget-card">
                 <div class="budget-header">
-                    <h3 class="budget-title" [style.color]="budget.color">{{ budget.category }}</h3>
-                    <p class="budget-allocated">Allocated: ${{ budget.allocated }}</p>
+                    <h3 class="budget-title" [style.color]="budget.color">{{ budget.categoryId.name }}</h3>
                 </div>
-                
                 <div class="budget-details">
                     <p class="budget-info">Spent: <span>${{ budget.spent }}</span></p>
                     <p class="budget-remaining" [ngClass]="{'negative': budget.remaining < 0, 'positive': budget.remaining >= 0}">

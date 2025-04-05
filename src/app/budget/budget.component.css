@@ -3,14 +3,12 @@
     width: 100%;
     max-width: 80rem;
     height: 100vh;
-    /* Set height to full viewport */
     margin: 0 auto;
     background: #f0f4f8;
-    /* Light gray background */
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    margin-left: 50px;
+    margin-left: 150px;
 }
 
 /* Header Styles */
