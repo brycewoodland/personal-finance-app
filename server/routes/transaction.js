@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
 // Get all transactions
 router.get('/', async (req, res) => {
     try {
-        const transactions = await Transaction.find();
+        const transactions = await Transaction.find().populate('categoryId');
         res.status(200).json(transactions);
     } catch (error) { 
         res.status(500).json({ message: error.message });

@@ -3,6 +3,7 @@ import { CategoryService } from './category.service';
 import { BudgetService } from '../budget/budget.service';
 import { Category } from './category.model';
 import { Budget } from '../budget/budget.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-category',
@@ -19,7 +20,8 @@ export class CategoryComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
-    private budgetService: BudgetService
+    private budgetService: BudgetService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +32,10 @@ export class CategoryComponent implements OnInit {
   fetchCategories(): void {
     this.categoryService.getCategories();
     this.categoryService.categoryListChangedEvent.subscribe((categories: Category[]) => {
-      this.categories = categories;
+      this.categories = categories.map(category => {
+        category.color = this.getRandomColor();
+        return category;
+      });
     });
   }
 
@@ -44,5 +49,15 @@ export class CategoryComponent implements OnInit {
   private getRandomColor(): string {
     const randomIndex = Math.floor(Math.random() * this.colors.length);
     return this.colors[randomIndex];
+  }
+
+  deleteCategory(category: Category): void {
+    if (confirm(`Are you sure you want to delete the category "${category.name}"?`)) {
+      this.categoryService.deleteCategory(category);
+    }
+  }
+
+  navigateToAddCategory(): void {
+    this.router.navigate(['/categories/edit', { id: null }]);
   }
 }

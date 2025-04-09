@@ -28,6 +28,7 @@ export class CategoryEditComponent implements OnInit {
 
       if (!this.id) {
         this.editMode = false;
+        this.category = new Category('', '', '', '', '', new Date(), new Date());
         return;
       }
 

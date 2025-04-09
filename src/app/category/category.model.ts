@@ -6,6 +6,7 @@ export class Category {
         public userId: string,
         public description: string,
         public createdAt: Date,
-        public updatedAt: Date
+        public updatedAt: Date,
+        public color?: string
     ) {}
 }

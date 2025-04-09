@@ -4,6 +4,7 @@
       <form #f="ngForm" (ngSubmit)="onSubmit(f)">
           <label for="categoryId">Category:</label>
           <select id="categoryId" name="categoryId" [(ngModel)]="budget.categoryId" required>
+              <option value="" disabled selected>Select a category</option>
               <option *ngFor="let category of categories" [value]="category._id">{{ category.name }}</option>
           </select>
 

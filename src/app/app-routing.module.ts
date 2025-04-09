@@ -12,13 +12,15 @@ import { ReportComponent } from './report/report.component';
 const routes: Routes = [
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: DashboardComponent },
-    { path: 'categories', component: CategoryComponent, children: [
-        {path: 'categories/edit/:id', component: CategoryEditComponent}
-    ] },
     {
-    path: 'budget', component: BudgetComponent, children: [
-        { path: 'new', component: BudgetAddComponent }
-    ]
+        path: 'categories', component: CategoryComponent, children: [
+            { path: 'edit/:id', component: CategoryEditComponent }
+        ]
+    },
+    {
+        path: 'budget', component: BudgetComponent, children: [
+            { path: 'new', component: BudgetAddComponent }
+        ]
     },
     { path: 'reports', component: ReportComponent },
     // { path: 'settings', component: SettingsComponent },

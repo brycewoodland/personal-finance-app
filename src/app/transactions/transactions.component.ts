@@ -1,12 +1,6 @@
-import { Component } from '@angular/core';
-
-interface Transaction {
-  date: string;
-  description: string;
-  amount: number;
-  type: 'income' | 'expense';
-  category: string;
-}
+import { Component, OnInit } from '@angular/core';
+import { TransactionService } from './transaction.service';
+import { Transaction } from './transaction.model';
 
 @Component({
   selector: 'app-transactions',
@@ -14,30 +8,18 @@ interface Transaction {
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.css'
 })
-export class TransactionsComponent {
-  transactions: Transaction[] = [
-    {
-      date: '2024-03-15',
-      description: 'Grocery Shopping',
-      amount: 150.50,
-      type: 'expense',
-      category: 'Food'
-    },
-    {
-      date: '2024-03-14',
-      description: 'Salary',
-      amount: 3000.00,
-      type: 'income',
-      category: 'Income'
-    },
-    {
-      date: '2024-03-13',
-      description: 'Netflix Subscription',
-      amount: 15.99,
-      type: 'expense',
-      category: 'Entertainment'
-    }
-  ];
+export class TransactionsComponent implements OnInit {
+  transactions: Transaction[] = [];
+
+  constructor(private transactionService: TransactionService) { }
+
+  ngOnInit(): void {
+    this.transactionService.getTransactions();
+    this.transactionService.transactionsChangedEvent.subscribe((transactions: Transaction[]) => {
+      this.transactions = transactions;
+      console.log('Fetched transactions:', this.transactions);
+    });
+  }
 
   showAddTransactionModal: boolean = false;
 }

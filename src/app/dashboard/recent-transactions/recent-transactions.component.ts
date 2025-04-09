@@ -1,12 +1,6 @@
-import { Component } from '@angular/core';
-
-interface Transaction {
-    date: string;
-    description: string;
-    amount: number;
-    type: 'income' | 'expense';
-    category: string;
-}
+import { Component, OnInit } from '@angular/core';
+import { TransactionService } from '../../transactions/transaction.service';
+import { Transaction } from '../../transactions/transaction.model';
 
 @Component({
     selector: 'app-recent-transactions',
@@ -14,35 +8,16 @@ interface Transaction {
     styleUrls: ['./recent-transactions.component.css'],
     standalone: false
 })
-export class RecentTransactionsComponent {
-    transactions: Transaction[] = [
-        {
-            date: '2024-03-15',
-            description: 'Grocery Shopping',
-            amount: 150.50,
-            type: 'expense',
-            category: 'Food'
-        },
-        {
-            date: '2024-03-14',
-            description: 'Salary',
-            amount: 3000.00,
-            type: 'income',
-            category: 'Income'
-        },
-        {
-            date: '2024-03-13',
-            description: 'Netflix Subscription',
-            amount: 15.99,
-            type: 'expense',
-            category: 'Entertainment'
-        },
-        {
-            date: '2024-03-12',
-            description: 'Gas',
-            amount: 45.00,
-            type: 'expense',
-            category: 'Transportation'
-        }
-    ];
+export class RecentTransactionsComponent implements OnInit {
+    transactions: Transaction[] = [];
+
+    constructor(private transactionService: TransactionService) { }
+
+    ngOnInit(): void {
+        this.transactionService.getTransactions();
+        this.transactionService.transactionsChangedEvent.subscribe((transactions: Transaction[]) => {
+            this.transactions = transactions;
+            console.log('Fetched transactions:', this.transactions);
+        });
+    }
 } 

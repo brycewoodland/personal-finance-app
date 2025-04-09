@@ -5,7 +5,7 @@
             <div class="transaction-info">
                 <div class="transaction-date">{{ transaction.date | date:'MMM d' }}</div>
                 <div class="transaction-description">{{ transaction.description }}</div>
-                <div class="transaction-category">{{ transaction.category }}</div>
+                <div class="transaction-category">{{ transaction.categoryId ? transaction.categoryId.name : 'N/A' }}</div>
             </div>
             <div class="transaction-amount" [ngClass]="{'income': transaction.type === 'income'}">
                 {{ transaction.amount | currency:'USD' }}

@@ -5,9 +5,9 @@ const transactionSchema = new mongoose.Schema({
     description: { type: String, required: true },
     amount: { type: Number, required: true },
     type: { type: String, required: true },
-    categoryId: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
+    categoryId: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' } || null,
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    customId: { type: Number, unique: true }, // Add custom ID field
+    customId: { type: Number, unique: true }
 });
 
 const Transaction = mongoose.model('Transaction', transactionSchema);
