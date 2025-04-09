@@ -16,6 +16,7 @@ import { BudgetComponent } from './budget/budget.component';
 import { ReportComponent } from './report/report.component';
 import { BudgetAddComponent } from './budget/budget-add/budget-add.component';
 import { CategoryEditComponent } from './category/category-edit/category-edit.component';
+import { CategoryAddComponent } from './category/category-add/category-add.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CategoryEditComponent } from './category/category-edit/category-edit.co
     BudgetComponent,
     ReportComponent,
     BudgetAddComponent,
-    CategoryEditComponent
+    CategoryEditComponent,
+    CategoryAddComponent
   ],
   imports: [
     BrowserModule,

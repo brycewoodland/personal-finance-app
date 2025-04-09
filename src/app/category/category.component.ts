@@ -3,7 +3,7 @@ import { CategoryService } from './category.service';
 import { BudgetService } from '../budget/budget.service';
 import { Category } from './category.model';
 import { Budget } from '../budget/budget.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-category',
@@ -21,7 +21,8 @@ export class CategoryComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private budgetService: BudgetService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -58,6 +59,6 @@ export class CategoryComponent implements OnInit {
   }
 
   navigateToAddCategory(): void {
-    this.router.navigate(['/categories/edit', { id: null }]);
+    this.router.navigate(['/categories/add']);
   }
 }

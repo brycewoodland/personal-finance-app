@@ -6,6 +6,7 @@ import { CategoryEditComponent } from './category/category-edit/category-edit.co
 import { BudgetComponent } from './budget/budget.component';
 import { BudgetAddComponent } from './budget/budget-add/budget-add.component';
 import { ReportComponent } from './report/report.component';
+import { CategoryAddComponent } from './category/category-add/category-add.component';
 // import { SettingsComponent } from './settings/settings.component';
 // import { LogoutComponent } from './logout/logout.component';
 
@@ -14,7 +15,9 @@ const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     {
         path: 'categories', component: CategoryComponent, children: [
-            { path: 'edit/:id', component: CategoryEditComponent }
+            { path: 'edit/:id', component: CategoryEditComponent },
+            { path: 'new', component: CategoryAddComponent }
+
         ]
     },
     {
